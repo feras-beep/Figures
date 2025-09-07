@@ -586,7 +586,7 @@
             new Chart(document.getElementById('fig3_outcome'), {
                 type: 'doughnut',
                 data: {
-                    labels: ['MRC: 0', ' 1', ' 2', ' 3', ' 4', ' 5'],
+                    labels: ['MRC 0', 'MRC 1', 'MRC 2', 'MRC 3', 'MRC 4', 'MRC 5'],
                     datasets: [{
                         data: [8, 21, 18, 34, 27, 28],
                         backgroundColor: ['#34495e', '#e74c3c', '#f39c12', '#f1c40f', '#2ecc71', '#27ae60'],
@@ -687,7 +687,7 @@
                 ctx.textAlign = 'right';
                 ctx.textBaseline = 'middle';
                 ctx.fillText(
-                    `Pre-op MRC ${i}`,
+                    `Pre MRC ${i}`,
                     padding - 15,
                     padding + 20 + (i * cellSize) + cellSize/2
                 );
@@ -698,7 +698,7 @@
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'top';
                 ctx.fillText(
-                    `Post-op MRC ${i}`,
+                    `Post MRC ${i}`,
                     padding + (i * cellSize) + cellSize/2,
                     padding + 20 + (4 * cellSize) + 15
                 );
