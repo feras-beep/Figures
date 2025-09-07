@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloadable Manuscript Figures</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .title {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+        }
+        .figure-section {
+            margin-bottom: 50px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        .figure-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .download-buttons {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .download-btn {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .canvas-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 10px 0;
+            position: relative;
+        }
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+        .instructions {
+            background: #e8f5e8;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 5px solid #27ae60;
+        }
+        .instructions h3 {
+            color: #27ae60;
+            margin: 0 0 10px 0;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 14px;
+        }
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .heatmap-container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Manuscript Figures - Foot Drop Study</div>
+        
+        <div class="instructions">
+            <h3>Download Instructions</h3>
+            <p>Click the download buttons below each figure to save high-resolution versions (300 DPI) suitable for manuscript submission. All figures are generated at publication quality.</p>
+        </div>
+
+        <!-- Figure 1 -->
+        <div class="figure-section">
+            <div class="figure-title">Figure 1: Patient Demographics and Baseline Characteristics</div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="canvas-container">
+                    <canvas id="fig1_age" width="600" height="400"></canvas>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="fig1_gender" width="600" height="400"></canvas>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="fig1_onset" width="600" height="400"></canvas>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="fig1_mrc" width="600" height="400"></canvas>
+                </div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">136</div>
+                    <div>Total Patients</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">48.5</div>
+                    <div>Mean Age (years)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">69.0</div>
+                    <div>Male Patients (%)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">67.1</div>
+                    <div>Mean Onset (days)</div>
+                </div>
+            </div>
+            
+            <div class="download-buttons">
+                <button class="download-btn" onclick="downloadFigure('fig1_combined', 'Figure1_Demographics')">Download Figure 1 (Combined)</button>
+                <button class="download-btn" onclick="downloadFigure('fig1_age', 'Figure1A_Age')">Download 1A (Age)</button>
+                <button class="download-btn" onclick="downloadFigure('fig1_gender', 'Figure1B_Gender')">Download 1B (Gender)</button>
+                <button class="download-btn" onclick="downloadFigure('fig1_onset', 'Figure1C_Onset')">Download 1C (Onset)</button>
+                <button class="download-btn" onclick="downloadFigure('fig1_mrc', 'Figure1D_MRC')">Download 1D (MRC)</button>
+            </div>
+        </div>
+
+        <!-- Figure 2 -->
+        <div class="figure-section">
+            <div class="figure-title">Figure 2: Impact of Surgical Timing on Foot Drop Resolution</div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                <div class="canvas-container">
+                    <canvas id="fig2_resolution" width="600" height="400"></canvas>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="fig2_odds" width="600" height="400"></canvas>
+                </div>
+            </div>
+            
+            <div class="canvas-container">
+                <canvas id="fig2_timeline" width="1200" height="300"></canvas>
+            </div>
+            
+            <div class="download-buttons">
+                <button class="download-btn" onclick="downloadFigure('fig2_combined', 'Figure2_SurgicalTiming')">Download Figure 2 (Combined)</button>
+                <button class="download-btn" onclick="downloadFigure('fig2_resolution', 'Figure2A_Resolution')">Download 2A (Resolution)</button>
+                <button class="download-btn" onclick="downloadFigure('fig2_odds', 'Figure2B_OddsRatio')">Download 2B (Odds Ratio)</button>
+                <button class="download-btn" onclick="downloadFigure('fig2_timeline', 'Figure2C_Timeline')">Download 2C (Timeline)</button>
+            </div>
+        </div>
+
+        <!-- Figure 3 -->
+        <div class="figure-section">
+            <div class="figure-title">Figure 3: Motor Recovery Patterns by Baseline MRC Grade</div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                <div class="canvas-container">
+                    <canvas id="fig3_improvement" width="600" height="400"></canvas>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="fig3_outcome" width="600" height="400"></canvas>
+                </div>
+            </div>
+            
+            <div class="heatmap-container">
+                <canvas id="fig3_heatmap" width="800" height="500"></canvas>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">+2.8</div>
+                    <div>Average gain from MRC 0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">+1.4</div>
+                    <div>Average gain from MRC 1</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">+1.2</div>
+                    <div>Average gain from MRC 2</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">+0.6</div>
+                    <div>Average gain from MRC 3</div>
+                </div>
+            </div>
+            
+            <div class="download-buttons">
+                <button class="download-btn" onclick="downloadFigure('fig3_combined', 'Figure3_MotorRecovery')">Download Figure 3 (Combined)</button>
+                <button class="download-btn" onclick="downloadFigure('fig3_improvement', 'Figure3A_Improvement')">Download 3A (Improvement)</button>
+                <button class="download-btn" onclick="downloadFigure('fig3_outcome', 'Figure3B_Outcomes')">Download 3B (Outcomes)</button>
+                <button class="download-btn" onclick="downloadFigure('fig3_heatmap', 'Figure3C_Heatmap')">Download 3C (Heatmap)</button>
+            </div>
+        </div>
+
+        <!-- Figure 4 -->
+        <div class="figure-section">
+            <div class="figure-title">Figure 4: Patient Factors Associated with Motor Recovery</div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="canvas-container">
+                    <canvas id="fig4_age" width="600" height="400"></canvas>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="fig4_onset" width="600" height="400"></canvas>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="fig4_frailty" width="600" height="400"></canvas>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="fig4_pain" width="600" height="400"></canvas>
+                </div>
+            </div>
+            
+            <div class="download-buttons">
+                <button class="download-btn" onclick="downloadFigure('fig4_combined', 'Figure4_PatientFactors')">Download Figure 4 (Combined)</button>
+                <button class="download-btn" onclick="downloadFigure('fig4_age', 'Figure4A_Age')">Download 4A (Age)</button>
+                <button class="download-btn" onclick="downloadFigure('fig4_onset', 'Figure4B_Onset')">Download 4B (Onset)</button>
+                <button class="download-btn" onclick="downloadFigure('fig4_frailty', 'Figure4C_Frailty')">Download 4C (Frailty)</button>
+                <button class="download-btn" onclick="downloadFigure('fig4_pain', 'Figure4D_Pain')">Download 4D (Pain)</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chart configurations and data
+        const chartConfigs = {
+            defaultOptions: {
+                responsive: false,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: { font: { size: 14 } }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: { font: { size: 14 } },
+                        ticks: { font: { size: 12 } }
+                    },
+                    y: {
+                        title: { font: { size: 14 } },
+                        ticks: { font: { size: 12 } }
+                    }
+                }
+            }
+        };
+
+        // Create all charts
+        function createAllCharts() {
+            // Figure 1 Charts
+            createFigure1Charts();
+            // Figure 2 Charts  
+            createFigure2Charts();
+            // Figure 3 Charts
+            createFigure3Charts();
+            // Figure 4 Charts
+            createFigure4Charts();
+        }
+
+        function createFigure1Charts() {
+            // Age Distribution
+            new Chart(document.getElementById('fig1_age'), {
+                type: 'bar',
+                data: {
+                    labels: ['<40', '40-49', '50-59', '≥60'],
+                    datasets: [{
+                        label: 'Number of Patients',
+                        data: [36, 47, 35, 18],
+                        backgroundColor: '#3498db',
+                        borderColor: '#2980b9',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    ...chartConfigs.defaultOptions,
+                    plugins: {
+                        ...chartConfigs.defaultOptions.plugins,
+                        title: { display: true, text: 'A. Age Distribution', font: { size: 16, weight: 'bold' } },
+                        legend: { display: false }
+                    },
+                    scales: {
+                        ...chartConfigs.defaultOptions.scales,
+                        y: {
+                            ...chartConfigs.defaultOptions.scales.y,
+                            title: { display: true, text: 'Number of Patients', font: { size: 14 } },
+                            beginAtZero: true
+                        },
+                        x: {
+                            ...chartConfigs.defaultOptions.scales.x,
+                            title: { display: true, text: 'Age Groups (years)', font: { size: 14 } }
+                        }
+                    }
+                }
+            });
+
+            // Gender Distribution
+            new Chart(document.getElementById('fig1_gender'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Female', 'Male'],
+                    datasets: [{
+                        data: [42, 94],
+                        backgroundColor: ['#e74c3c', '#3498db'],
+                        borderWidth: 3,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    ...chartConfigs.defaultOptions,
+                    plugins: {
+                        ...chartConfigs.defaultOptions.plugins,
+                        title: { display: true, text: 'B. Gender Distribution', font: { size: 16, weight: 'bold' } },
+                        legend: { position: 'bottom', labels: { padding: 20, font: { size: 14 } } }
+                    }
+                }
+            });
+
+            // Onset Distribution
+            new Chart(document.getElementById('fig1_onset'), {
+                type: 'bar',
+                data: {
+                    labels: ['≤2 days', '3-7 days', '1-4 weeks', '>4 weeks'],
+                    datasets: [{
+                        label: 'Number of Patients',
+                        data: [26, 11, 35, 64],
+                        backgroundColor: '#2ecc71',
+                        borderColor: '#27ae60',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    ...chartConfigs.defaultOptions,
+                    plugins: {
+                        ...chartConfigs.defaultOptions.plugins,
+                        title: { display: true, text: 'C. Time from Onset to Surgery', font: { size: 16, weight: 'bold' } },
+                        legend: { display: false }
+                    },
+                    scales: {
+                        ...chartConfigs.defaultOptions.scales,
+                        y: {
+                            ...chartConfigs.defaultOptions.scales.y,
+                            title: { display: true, text: 'Number of Patients', font: { size: 14 } },
+                            beginAtZero: true
+                        },
+                        x: {
+                            ...chartConfigs.defaultOptions.scales.x,
+                            title: { display: true, text: 'Time from Onset', font: { size: 14 } }
+                        }
+                    }
+                }
+            });
+
+            // Pre-op MRC Distribution
+            new Chart(document.getElementById('fig1_mrc'), {
+                type: 'bar',
+                data: {
+                    labels: ['MRC 0', 'MRC 1', 'MRC 2', 'MRC 3'],
+                    datasets: [{
+                        label: 'Number of Patients',
+                        data: [32, 37, 37, 36],
+                        backgroundColor: '#9b59b6',
+                        borderColor: '#8e44ad',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    ...chartConfigs.defaultOptions,
+                    plugins: {
+                        ...chartConfigs.defaultOptions.plugins,
+                        title: { display: true, text: 'D. Pre-operative MRC Grade', font: { size: 16, weight: 'bold' } },
+                        legend: { display: false }
+                    },
+                    scales: {
+                        ...chartConfigs.defaultOptions.scales,
+                        y: {
+                            ...chartConfigs.defaultOptions.scales.y,
+                            title: { display: true, text: 'Number of Patients', font: { size: 14 } },
+                            beginAtZero: true
+                        },
+                        x: {
+                            ...chartConfigs.defaultOptions.scales.x,
+                            title: { display: true, text: 'Pre-operative MRC Grade', font: { size: 14 } }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createFigure2Charts() {
+            // Resolution Rates (CORRECTED)
+            new Chart(document.getElementById('fig2_resolution'), {
+                type: 'bar',
+                data: {
+                    labels: ['≤2 days', '≤5 days', '≤1 week', '≤6 weeks', '>6 weeks'],
+                    datasets: [{
+                        label: 'Resolution Rate (%)',
+                        data: [69.2, 59.5, 33.0, 26.1, 48.4],
+                        backgroundColor: ['#27ae60', '#2ecc71', '#f39c12', '#e67e22', '#e74c3c'],
+                        borderColor: ['#1e8449', '#27ae60', '#e67e22', '#d35400', '#c0392b'],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    ...chartConfigs.defaultOptions,
+                    plugins: {
+                        ...chartConfigs.defaultOptions.plugins,
+                        title: { display: true, text: 'A. Resolution Rates by Surgical Timing', font: { size: 16, weight: 'bold' } },
+                        legend: { display: false }
+                    },
+                    scales: {
+                        ...chartConfigs.defaultOptions.scales,
+                        y: {
+                            ...chartConfigs.defaultOptions.scales.y,
+                            title: { display: true, text: 'Resolution Rate (%)', font: { size: 14 } },
+                            beginAtZero: true,
+                            max: 80
+                        },
+                        x: {
+                            ...chartConfigs.defaultOptions.scales.x,
+                            title: { display: true, text: 'Time from Onset to Surgery', font: { size: 14 } }
+                        }
+                    }
+                }
+            });
+
+            // Odds Ratios
+            new Chart(document.getElementById('fig2_odds'), {
+                type: 'bar',
+                data: {
+                    labels: ['≤2 days', '≤5 days'],
+                    datasets: [{
+                        label: 'Odds Ratio',
+                        data: [0.20, 0.33],
+                        backgroundColor: ['#e74c3c', '#f39c12'],
+                        borderColor: ['#c0392b', '#e67e22'],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    ...chartConfigs.defaultOptions,
+                    plugins: {
+                        ...chartConfigs.defaultOptions.plugins,
+                        title: { display: true, text: 'B. Odds Ratios for Persistent Foot Drop', font: { size: 16, weight: 'bold' } },
+                        legend: { display: false }
+                    },
+                    scales: {
+                        ...chartConfigs.defaultOptions.scales,
+                        y: {
+                            ...chartConfigs.defaultOptions.scales.y,
+                            title: { display: true, text: 'Odds Ratio', font: { size: 14 } },
+                            beginAtZero: true,
+                            max: 1.0
+                        },
+                        x: {
+                            ...chartConfigs.defaultOptions.scales.x,
+                            title: { display: true, text: 'Surgical Timing Window', font: { size: 14 } }
+                        }
+                    }
+                }
+            });
+
+            // Timeline
+            new Chart(document.getElementById('fig2_timeline'), {
+                type: 'line',
+                data: {
+                    labels: ['Day 1', 'Day 2', 'Day 5', '1 Week', '2 Weeks', '6 Weeks', '8 Weeks', '10 Weeks'],
+                    datasets: [{
+                        label: 'Persistent Foot Drop Rate (%)',
+                        data: [71.4, 72.7, 60.6, 32.3, 34.6, 26.1, 19.4, 19.4],
+                        borderColor: '#e74c3c',
+                        backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 8,
+                        pointHoverRadius: 10,
+                        borderWidth: 3
+                    }]
+                },
+                options: {
+                    ...chartConfigs.defaultOptions,
+                    plugins: {
+                        ...chartConfigs.defaultOptions.plugins,
+                        title: { display: true, text: 'C. Timeline of Foot Drop Resolution by Surgical Window', font: { size: 16, weight: 'bold' } },
+                        legend: { position: 'top', labels: { padding: 20, font: { size: 14 } } }
+                    },
+                    scales: {
+                        ...chartConfigs.defaultOptions.scales,
+                        y: {
+                            ...chartConfigs.defaultOptions.scales.y,
+                            title: { display: true, text: 'Persistent Foot Drop Rate (%)', font: { size: 14 } },
+                            beginAtZero: true,
+                            max: 80
+                        },
+                        x: {
+                            ...chartConfigs.defaultOptions.scales.x,
+                            title: { display: true, text: 'Time from Symptom Onset to Surgery', font: { size: 14 } }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createFigure3Charts() {
+            // Average Improvement
+            new Chart(document.getElementById('fig3_improvement'), {
+                type: 'bar',
+                data: {
+                    labels: ['MRC 0', 'MRC 1', 'MRC 2', 'MRC 3'],
+                    datasets: [{
+                        label: 'Average MRC Improvement',
+                        data: [2.8, 1.4, 1.2, 0.6],
+                        backgroundColor: ['#e74c3c', '#f39c12', '#f1c40f', '#2ecc71'],
+                        borderColor: ['#c0392b', '#e67e22', '#f39c12', '#27ae60'],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    ...chartConfigs.defaultOptions,
+                    plugins: {
+                        ...chartConfigs.defaultOptions.plugins,
+                        title: { display: true, text: 'A. Average MRC Improvement by Baseline', font: { size: 16, weight: 'bold' } },
+                        legend: { display: false }
+                    },
+                    scales: {
+                        ...chartConfigs.defaultOptions.scales,
+                        y: {
+                            ...chartConfigs.defaultOptions.scales.y,
+                            title: { display: true, text: 'Average MRC Improvement', font: { size: 14 } },
+                            beginAtZero: true,
+                            max: 3.5
+                        },
+                        x: {
+                            ...chartConfigs.defaultOptions.scales.x,
+                            title: { display: true, text: 'Pre-operative MRC Grade', font: { size: 14 } }
+                        }
+                    }
+                }
+            });
+
+            // Post-op Distribution
+            new Chart(document.getElementById('fig3_outcome'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['MRC 0', 'MRC 1', 'MRC 2', 'MRC 3', 'MRC 4', 'MRC 5'],
+                    datasets: [{
+                        data: [8, 21, 18, 34, 27, 28],
+                        backgroundColor: ['#34495e', '#e74c3c', '#f39c12', '#f1c40f', '#2ecc71', '#27ae60'],
+                        borderWidth: 3,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    ...chartConfigs.defaultOptions,
+                    plugins: {
+                        ...chartConfigs.defaultOptions.plugins,
+                        title: { display: true, text: 'B. Post-operative MRC Distribution', font: { size: 16, weight: 'bold' } },
+                        legend: { position: 'right', labels: { padding: 15, font: { size: 12 } } }
+                    }
+                }
+            });
+
+            // Create heatmap
+            createHeatmap();
+        }
+
+        function createHeatmap() {
+            const canvas = document.getElementById('fig3_heatmap');
+            const ctx = canvas.getContext('2d');
+            
+            // Clear canvas
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            const cellSize = 80;
+            const padding = 60;
+            
+            // MRC transition data from your manuscript
+            const transitionData = [
+                [15.6, 15.6, 3.1, 28.1, 12.5, 25.0], // MRC 0 outcomes
+                [0.0, 35.1, 13.5, 27.0, 13.5, 8.1],  // MRC 1 outcomes
+                [5.4, 5.4, 18.9, 21.6, 24.3, 18.9],  // MRC 2 outcomes
+                [2.8, 2.8, 13.9, 19.4, 25.0, 27.8]   // MRC 3 outcomes
+            ];
+            
+            function getHeatmapColor(percentage) {
+                if (percentage <= 10) return '#3498db';
+                if (percentage <= 25) return '#f39c12';
+                return '#e74c3c';
+            }
+            
+            // Draw title
+            ctx.fillStyle = '#2c3e50';
+            ctx.font = 'bold 18px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('C. MRC Transition Matrix: Pre-operative → Post-operative', canvas.width/2, 30);
+            
+            // Add axis titles
+            ctx.font = 'bold 14px Arial';
+            ctx.fillText('Pre-operative MRC', 25, canvas.height/2);
+            
+            // Rotate context for vertical text
+            ctx.save();
+            ctx.translate(canvas.width/2, canvas.height - 15);
+            ctx.fillText('Post-operative MRC', 0, 0);
+            ctx.restore();
+            
+            // Draw cells
+            for (let row = 0; row < 4; row++) {
+                for (let col = 0; col < 6; col++) {
+                    const x = padding + (col * cellSize);
+                    const y = padding + 20 + (row * cellSize);
+                    const percentage = transitionData[row][col];
+                    
+                    // Fill cell
+                    ctx.fillStyle = getHeatmapColor(percentage);
+                    ctx.fillRect(x, y, cellSize, cellSize);
+                    
+                    // Draw border
+                    ctx.strokeStyle = '#ffffff';
+                    ctx.lineWidth = 3;
+                    ctx.strokeRect(x, y, cellSize, cellSize);
+                    
+                    // Add text
+                    ctx.fillStyle = '#ffffff';
+                    ctx.font = 'bold 14px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(
+                        percentage.toFixed(1) + '%',
+                        x + cellSize/2,
+                        y + cellSize/2
+                    );
+                }
+            }
+            
+            // Add labels
+            ctx.fillStyle = '#2c3e50';
+            ctx.font = 'bold 16px Arial';
+            
+            // Y-axis labels (Pre-op MRC)
+            for (let i = 0; i < 4; i++) {
+                ctx.textAlign = 'right';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(
+                    `Pre-op MRC ${i}`,
+                    padding - 15,
+                    padding + 20 + (i * cellSize) + cellSize/2
+                );
+            }
+            
+            // X-axis labels (Post-op MRC)
+            for (let i = 0; i < 6; i++) {
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'top';
+                ctx.fillText(
+                    `Post-op MRC ${i}`,
+                    padding + (i * cellSize) + cellSize/2,
+                    padding + 20 + (4 * cellSize) + 15
+                );
+            }
+        }
+
+        function createFigure4Charts() {
+            // Age by Improvement
+            new Chart(document.getElementById('fig4_age'), {
+                type: 'bar',
+                data: {
+                    labels: ['Improved', 'Not Improved'],
+                    datasets: [{
+                        label: 'Mean Age (years)',
+                        data: [46.5, 52.8],
+                        backgroundColor: ['#2ecc71', '#e74c3c'],
+                        borderColor: ['#27ae60', '#c0392b'],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    ...chartConfigs.defaultOptions,
+                    plugins: {
+                        ...chartConfigs.defaultOptions.plugins,
+                        title: { display: true, text: 'A. Age by Improvement Status (p=0.006)', font: { size: 16, weight: 'bold' } },
+                        legend: { display: false }
+                    },
+                    scales: {
+                        ...chartConfigs.defaultOptions.scales,
+                        y: {
+                            ...chartConfigs.defaultOptions.scales.y,
+                            title: { display: true, text: 'Mean Age (years)', font: { size: 14 } },
+                            beginAtZero: true,
+                            max: 60
+                        },
+                        x: {
+                            ...chartConfigs.defaultOptions.scales.x,
+                            title: { display: true, text: 'Motor Improvement Status', font: { size: 14 } }
+                        }
+                    }
+                }
+            });
+
+            // Onset Duration
+            new Chart(document.getElementById('fig4_onset'), {
+                type: 'bar',
+                data: {
+                    labels: ['Resolved', 'Not Resolved'],
+                    datasets: [{
+                        label: 'Mean Symptom Duration (days)',
+                        data: [33.3, 90.1],
+                        backgroundColor: ['#2ecc71', '#e74c3c'],
+                        borderColor: ['#27ae60', '#c0392b'],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    ...chartConfigs.defaultOptions,
+                    plugins: {
+                        ...chartConfigs.defaultOptions.plugins,
+                        title: { display: true, text: 'B. Symptom Duration by Resolution (p=0.016)', font: { size: 16, weight: 'bold' } },
+                        legend: { display: false }
+                    },
+                    scales: {
+                        ...chartConfigs.defaultOptions.scales,
+                        y: {
+                            ...chartConfigs.defaultOptions.scales.y,
+                            title: { display: true, text: 'Mean Duration (days)', font: { size: 14 } },
+                            beginAtZero: true,
+                            max: 100
+                        },
+                        x: {
+                            ...chartConfigs.defaultOptions.scales.x,
+                            title: { display: true, text: 'Foot Drop Resolution Status', font: { size: 14 } }
+                        }
+                    }
+                }
+            });
+
+            // Frailty Score
+            new Chart(document.getElementById('fig4_frailty'), {
+                type: 'bar',
+                data: {
+                    labels: ['Improved', 'Not Improved'],
+                    datasets: [{
+                        label: 'Mean Frailty Score',
+                        data: [1.63, 2.21],
+                        backgroundColor: ['#3498db', '#f39c12'],
+                        borderColor: ['#2980b9', '#e67e22'],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    ...chartConfigs.defaultOptions,
+                    plugins: {
+                        ...chartConfigs.defaultOptions.plugins,
+                        title: { display: true, text: 'C. Frailty Score by Improvement (p=0.032)', font: { size: 16, weight: 'bold' } },
+                        legend: { display: false }
+                    },
+                    scales: {
+                        ...chartConfigs.defaultOptions.scales,
+                        y: {
+                            ...chartConfigs.defaultOptions.scales.y,
+                            title: { display: true, text: 'Rockwood Frailty Score', font: { size: 14 } },
+                            beginAtZero: true,
+                            max: 3
+                        },
+                        x: {
+                            ...chartConfigs.defaultOptions.scales.x,
+                            title: { display: true, text: 'Motor Improvement Status', font: { size: 14 } }
+                        }
+                    }
+                }
+            });
+
+            // Pain vs Foot Drop - removed y-axis labels
+            new Chart(document.getElementById('fig4_pain'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Pain & Drop Resolved', 'Pain Resolved, Drop Persistent', 'Pain Persistent, Drop Resolved', 'Both Persistent'],
+                    datasets: [{
+                        data: [28, 3, 13, 17],
+                        backgroundColor: ['#2ecc71', '#f1c40f', '#3498db', '#e74c3c'],
+                        borderWidth: 3,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: false,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: { display: true, text: 'D. Pain vs Foot Drop Resolution (p=0.049)', font: { size: 16, weight: 'bold' } },
+                        legend: { 
+                            position: 'bottom', 
+                            labels: { 
+                                padding: 15, 
+                                font: { size: 11 } 
+                            } 
+                        }
+                    }
+                }
+            });
+        }
+
+        // Download function
+        function downloadFigure(canvasId, filename) {
+            let canvas;
+            
+            if (canvasId.includes('combined')) {
+                // Create combined canvas for multi-panel figures
+                canvas = createCombinedCanvas(canvasId);
+            } else {
+                canvas = document.getElementById(canvasId);
+            }
+            
+            if (!canvas) {
+                alert('Canvas not found: ' + canvasId);
+                return;
+            }
+            
+            // Convert to high-resolution image
+            const link = document.createElement('a');
+            link.download = filename + '.png';
+            link.href = canvas.toDataURL('image/png', 1.0);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function createCombinedCanvas(figureType) {
+            const combinedCanvas = document.createElement('canvas');
+            const ctx = combinedCanvas.getContext('2d');
+            
+            if (figureType === 'fig1_combined') {
+                // Figure 1: 2x2 grid
+                combinedCanvas.width = 1200;
+                combinedCanvas.height = 800;
+                
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, combinedCanvas.width, combinedCanvas.height);
+                
+                // Add title
+                ctx.fillStyle = '#2c3e50';
+                ctx.font = 'bold 24px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('Figure 1: Patient Demographics and Baseline Characteristics', combinedCanvas.width/2, 30);
+                
+                // Copy individual canvases
+                const canvases = ['fig1_age', 'fig1_gender', 'fig1_onset', 'fig1_mrc'];
+                const positions = [{x: 0, y: 60}, {x: 600, y: 60}, {x: 0, y: 430}, {x: 600, y: 430}];
+                
+                canvases.forEach((id, index) => {
+                    const sourceCanvas = document.getElementById(id);
+                    if (sourceCanvas) {
+                        ctx.drawImage(sourceCanvas, positions[index].x, positions[index].y, 600, 370);
+                    }
+                });
+                
+            } else if (figureType === 'fig2_combined') {
+                // Figure 2: 2x1 top, 1x1 bottom
+                combinedCanvas.width = 1200;
+                combinedCanvas.height = 900;
+                
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, combinedCanvas.width, combinedCanvas.height);
+                
+                // Add title
+                ctx.fillStyle = '#2c3e50';
+                ctx.font = 'bold 24px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('Figure 2: Impact of Surgical Timing on Foot Drop Resolution', combinedCanvas.width/2, 30);
+                
+                // Top row
+                ctx.drawImage(document.getElementById('fig2_resolution'), 0, 60, 600, 400);
+                ctx.drawImage(document.getElementById('fig2_odds'), 600, 60, 600, 400);
+                
+                // Bottom row
+                ctx.drawImage(document.getElementById('fig2_timeline'), 0, 480, 1200, 300);
+                
+            } else if (figureType === 'fig3_combined') {
+                // Figure 3: 2x1 top, heatmap bottom
+                combinedCanvas.width = 1200;
+                combinedCanvas.height = 1000;
+                
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, combinedCanvas.width, combinedCanvas.height);
+                
+                // Add title
+                ctx.fillStyle = '#2c3e50';
+                ctx.font = 'bold 24px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('Figure 3: Motor Recovery Patterns by Baseline MRC Grade', combinedCanvas.width/2, 30);
+                
+                // Top row
+                ctx.drawImage(document.getElementById('fig3_improvement'), 0, 60, 600, 400);
+                ctx.drawImage(document.getElementById('fig3_outcome'), 600, 60, 600, 400);
+                
+                // Bottom heatmap
+                ctx.drawImage(document.getElementById('fig3_heatmap'), 200, 480, 800, 500);
+                
+            } else if (figureType === 'fig4_combined') {
+                // Figure 4: 2x2 grid
+                combinedCanvas.width = 1200;
+                combinedCanvas.height = 800;
+                
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, combinedCanvas.width, combinedCanvas.height);
+                
+                // Add title
+                ctx.fillStyle = '#2c3e50';
+                ctx.font = 'bold 24px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('Figure 4: Patient Factors Associated with Motor Recovery', combinedCanvas.width/2, 30);
+                
+                // 2x2 grid
+                const canvases = ['fig4_age', 'fig4_onset', 'fig4_frailty', 'fig4_pain'];
+                const positions = [{x: 0, y: 60}, {x: 600, y: 60}, {x: 0, y: 430}, {x: 600, y: 430}];
+                
+                canvases.forEach((id, index) => {
+                    const sourceCanvas = document.getElementById(id);
+                    if (sourceCanvas) {
+                        ctx.drawImage(sourceCanvas, positions[index].x, positions[index].y, 600, 370);
+                    }
+                });
+            }
+            
+            return combinedCanvas;
+        }
+
+        // Initialize all charts when page loads
+        window.addEventListener('load', function() {
+            setTimeout(createAllCharts, 100);
+        });
+    </script>
+</body>
+</html>
