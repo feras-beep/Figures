@@ -510,7 +510,7 @@
                 data: {
                     labels: ['Day 1', 'Day 2', 'Day 5', '1 Week', '2 Weeks', '6 Weeks', '8 Weeks', '10 Weeks'],
                     datasets: [{
-                        label: 'Persistent Foot Drop Rate (%)',
+                        label: 'Resolution of Foot Drop Rate (%)',
                         data: [71.4, 72.7, 60.6, 32.3, 34.6, 26.1, 19.4, 19.4],
                         borderColor: '#e74c3c',
                         backgroundColor: 'rgba(231, 76, 60, 0.1)',
@@ -532,7 +532,7 @@
                         ...chartConfigs.defaultOptions.scales,
                         y: {
                             ...chartConfigs.defaultOptions.scales.y,
-                            title: { display: true, text: 'Persistent Foot Drop Rate (%)', font: { size: 14 } },
+                            title: { display: true, text: 'Foot Drop Resolution Rate (%)', font: { size: 14 } },
                             beginAtZero: true,
                             max: 80
                         },
@@ -586,7 +586,7 @@
             new Chart(document.getElementById('fig3_outcome'), {
                 type: 'doughnut',
                 data: {
-                    labels: ['MRC 0', 'MRC 1', 'MRC 2', 'MRC 3', 'MRC 4', 'MRC 5'],
+                    labels: ['MRC: 0', ' 1', ' 2', ' 3', ' 4', ' 5'],
                     datasets: [{
                         data: [8, 21, 18, 34, 27, 28],
                         backgroundColor: ['#34495e', '#e74c3c', '#f39c12', '#f1c40f', '#2ecc71', '#27ae60'],
