@@ -640,9 +640,15 @@
             ctx.fillText('C. MRC Transition Matrix: Pre-operative → Post-operative', canvas.width/2, 30);
             
             // Add axis titles
-            ctx.font = 'bold 14px Arial';
-            ctx.fillText('Pre-op MRC', 20, canvas.height/2);
+            ctx.save(); // Save the current canvas state
             ctx.translate(20, canvas.height/2); // Move to the position
+            ctx.rotate(-Math.PI / 2); // Rotate -90 degrees (counter-clockwise)
+            ctx.font = 'bold 14px Arial';
+            ctx.textAlign = 'center'; // Center the text at the rotation point
+            ctx.textBaseline = 'middle';
+            ctx.fillText('Pre-op MRC', 0, 0); // Draw at the origin (0,0) after transformation
+            ctx.restore(); // Restore the canvas state
+        
 
             // Rotate context for vertical text
             ctx.save();
