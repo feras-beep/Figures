@@ -642,10 +642,11 @@
             // Add axis titles
             ctx.font = 'bold 14px Arial';
             ctx.fillText('Pre-op MRC', 20, canvas.height/2);
-            
+            ctx.translate(20, canvas.height/2); // Move to the position
+
             // Rotate context for vertical text
             ctx.save();
-            ctx.translate(canvas.width/3, canvas.height - 15);
+            ctx.translate(canvas.width/2.5, canvas.height - 15);
             ctx.fillText('Post-operative MRC', 0, 0);
             ctx.restore();
             
